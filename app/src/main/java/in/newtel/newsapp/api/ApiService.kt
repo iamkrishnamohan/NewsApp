@@ -9,16 +9,10 @@ import retrofit2.http.Query
 interface ApiService {
 
 
-    /*@GET("movie/popular")
-    suspend fun getPopularMoviesList(@Query("page") page: Int): Response<MoviesListResponse>
-
-    @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("movie_id") id: Int): Response<MovieDetailsResponse>*/
-
     @GET("v2/top-headlines")
     suspend fun getBreakingNews(
         @Query("country")
-        countryCode: String = "us",
+        countryCode: String = "in",
         @Query("page")
         pageNumber: Int = 1,
         @Query("apiKey")

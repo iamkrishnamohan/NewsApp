@@ -39,7 +39,7 @@ class NewsViewModel @Inject constructor(private val repository: ApiRepository) :
     var searchNewsResponse: NewsResponse? = null
 
     init {
-        getBreakingNews("us")
+        getBreakingNews("in")
     }
 
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {

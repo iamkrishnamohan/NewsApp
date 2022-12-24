@@ -49,7 +49,6 @@ class DragAndDropFragment : Fragment() {
                 putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, 20)
             })
         }
-
     }
 
     private fun initializeMultiPicker() {
@@ -78,6 +77,7 @@ class DragAndDropFragment : Fragment() {
                 }
             }
     }
+
 
     private fun generateItems(picsList: MutableList<Uri?>) {
         val adapter = DragAndDropAdapter(requireContext(), picsList, object : OnStartDragListener {

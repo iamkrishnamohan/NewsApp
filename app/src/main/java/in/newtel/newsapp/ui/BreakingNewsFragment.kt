@@ -1,6 +1,5 @@
 package `in`.newtel.newsapp.ui
 
-import `in`.newtel.newsapp.R
 import `in`.newtel.newsapp.adapters.NewsAdapter
 import `in`.newtel.newsapp.databinding.FragmentBreakingNewsBinding
 import `in`.newtel.newsapp.utils.Constants.QUERY_PAGE_SIZE
@@ -13,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hilt_retrofit.viewmodel.NewsViewModel
@@ -40,17 +38,22 @@ class BreakingNewsFragment : Fragment() {
 
         // navigate to the clicked article
         newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("article", it)
-            }
-            Log.e("Breaking", "onViewCreated: ${it.url}")
-            findNavController().navigate(
-                R.id.action_breakingNewsFragment_to_articleFragment,
-                bundle
-            )
+            /* val bundle = Bundle().apply {
+                 putParcelable("article", it)
+             }
+             Log.e("Breaking", "onViewCreated: ${it.url}")
+             findNavController().navigate(
+                 R.id.action_breakingNewsFragment_to_articleFragment,
+                 bundle
+             )*/
 
         }
 
+        observer()
+
+    }
+
+    private fun observer() {
         viewModel.breakingNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -75,7 +78,9 @@ class BreakingNewsFragment : Fragment() {
                 }
             }
         }
+
     }
+
 
     private fun hideProgressBar() {
         paginationProgressBar.visibility = View.INVISIBLE
@@ -115,7 +120,7 @@ class BreakingNewsFragment : Fragment() {
             val shouldPaginate =
                 isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
             if (shouldPaginate) {
-                viewModel.getBreakingNews("us")
+                viewModel.getBreakingNews("in")
                 isScrolling = false
             }
         }
@@ -129,5 +134,6 @@ class BreakingNewsFragment : Fragment() {
             addOnScrollListener(this@BreakingNewsFragment.scrollListener)
         }
     }
+
 
 }
