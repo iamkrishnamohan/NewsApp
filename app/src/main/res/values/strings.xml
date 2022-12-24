@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="breaking_news">Breaking News</string>
+    <string name="drag_drop"><![CDATA[Drag & Drop]]></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pick_multiple_photos">Pick multiple photos</string>
+    <string name="news_image">News Image</string>
+    <string name="picture">Picture</string>
+</resources>
